@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400D45B2201773AA0048E747 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400D45B1201773AA0048E747 /* Meme.swift */; };
 		4087B88C201609AD00973BD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4087B88B201609AD00973BD9 /* AppDelegate.swift */; };
 		4087B88E201609AD00973BD9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4087B88D201609AD00973BD9 /* ViewController.swift */; };
 		4087B891201609AD00973BD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4087B88F201609AD00973BD9 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		400D45B1201773AA0048E747 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		4087B888201609AD00973BD9 /* ImagePickExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePickExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4087B88B201609AD00973BD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4087B88D201609AD00973BD9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		400D45B02017739A0048E747 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				400D45B1201773AA0048E747 /* Meme.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		4087B87F201609AD00973BD9 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		4087B88A201609AD00973BD9 /* ImagePickExample */ = {
 			isa = PBXGroup;
 			children = (
+				400D45B02017739A0048E747 /* model */,
 				4087B88B201609AD00973BD9 /* AppDelegate.swift */,
 				4087B88D201609AD00973BD9 /* ViewController.swift */,
 				4087B88F201609AD00973BD9 /* Main.storyboard */,
@@ -136,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				400D45B2201773AA0048E747 /* Meme.swift in Sources */,
 				4087B88E201609AD00973BD9 /* ViewController.swift in Sources */,
 				4087B88C201609AD00973BD9 /* AppDelegate.swift in Sources */,
 			);
@@ -275,6 +287,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VRZW89MF7Y;
 				INFOPLIST_FILE = ImagePickExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ravikiran.ImagePickExample;
@@ -289,6 +302,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VRZW89MF7Y;
 				INFOPLIST_FILE = ImagePickExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ravikiran.ImagePickExample;
