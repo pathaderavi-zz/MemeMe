@@ -21,12 +21,15 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         bottomTextField.delegate = self
         topTextField.delegate = self
         if (imageView.image == nil){
             shareButton.isEnabled = false
         }
+let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: "saveImage")
+ 
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
         let memeTextAttributes:[String:Any] = [
