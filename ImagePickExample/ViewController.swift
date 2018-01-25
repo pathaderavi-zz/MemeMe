@@ -9,38 +9,41 @@
 import UIKit
 
 class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate {
-
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var toolBarCustom: UIToolbar!
     //MARK : Problems when Attrubutes are applied
-//
-//    let memeTextAttributes:[String:Any] = [
-//        NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
-//        NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
-//
-//        ]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         bottomTextField.delegate = self
         topTextField.delegate = self
+        if (imageView.image == nil){
+            shareButton.isEnabled = false
+        }
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        let memeTextAttributes:[String:Any] = [
+            NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
+            NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
+            NSAttributedStringKey.font.rawValue: UIFont(name: "Impact", size: 40)!,
+            NSAttributedStringKey.strokeWidth.rawValue : -3.0,
+            NSAttributedStringKey.paragraphStyle.rawValue: paragraph,
+       
+            ]
+//        self.topTextField.adjustsFontSizeToFitWidth = true
+//        self.bottomTextField.adjustsFontSizeToFitWidth = true
+
+       topTextField.defaultTextAttributes = memeTextAttributes
+       bottomTextField.defaultTextAttributes = memeTextAttributes
         
-     
-        
-//        topTextField.font = UIFont(name: "Impact", size: 35)
-//        bottomTextField.font = UIFont(name: "Impact", size: 35)
-        
-        self.topTextField.adjustsFontSizeToFitWidth = true
-        self.bottomTextField.adjustsFontSizeToFitWidth = true
-//
-//    topTextField.defaultTextAttributes = memeTextAttributes
-//        bottomTextField.defaultTextAttributes = memeTextAttributes
     }
- 
 
     @IBAction func selectImage(_ sender: Any) {
         let pickController = UIImagePickerController()
@@ -52,7 +55,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         // Dispose of any resources that can be recreated.
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-
+        if(imageView.image == nil){
+            shareButton.isEnabled = false
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -65,21 +70,35 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
+            shareButton.isEnabled = true
         }
         self.dismiss(animated: true, completion: nil)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-       // textField.endEditing(true)
+   
+        if(textField.text?.count==0){
+            if(textField.tag==1){
+                textField.text = "SET TOP TEXT"
+            }else{
+                textField.text = "SET BOTTOM TEXT"
+            }
+        }
+        
         view.frame.origin.y = 0
+        if(textField.tag==1){
+            subscribeToKeyboardNotifications()
+        }
         return true
     }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if(textField.tag==1){
+            unsubscribeFromKeyboardNotifications()
+        }
         textField.text = ""
-        //return true
+      
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -100,7 +119,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         
         let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
     
