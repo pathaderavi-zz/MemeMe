@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
+    @IBOutlet weak var topNavigationBar: UINavigationBar!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
@@ -23,13 +24,26 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         super.viewDidLoad()
         
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        bottomTextField.delegate = self
-        topTextField.delegate = self
+        
+        configure(textField: topTextField, withText: "SET TOP TEXT")
+        configure(textField: bottomTextField, withText: "SET BOTTOM TEXT")
+        
         if (imageView.image == nil){
             shareButton.isEnabled = false
         }
-let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: "saveImage")
+        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: "saveImage")
  
+    
+//        self.topTextField.adjustsFontSizeToFitWidth = true
+//        self.bottomTextField.adjustsFontSizeToFitWidth = true
+
+  
+        
+    }
+    func configure(textField: UITextField, withText text: String) {
+        textField.delegate = self
+        textField.text = text
+        
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
         let memeTextAttributes:[String:Any] = [
@@ -38,21 +52,15 @@ let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, 
             NSAttributedStringKey.font.rawValue: UIFont(name: "Impact", size: 40)!,
             NSAttributedStringKey.strokeWidth.rawValue : -3.0,
             NSAttributedStringKey.paragraphStyle.rawValue: paragraph,
-       
+            
             ]
-//        self.topTextField.adjustsFontSizeToFitWidth = true
-//        self.bottomTextField.adjustsFontSizeToFitWidth = true
-
-       topTextField.defaultTextAttributes = memeTextAttributes
-       bottomTextField.defaultTextAttributes = memeTextAttributes
-        
+        textField.defaultTextAttributes = memeTextAttributes
     }
-
-    @IBAction func selectImage(_ sender: Any) {
-        let pickController = UIImagePickerController()
-        pickController.delegate = self
-        self.present(pickController,animated: true,completion: nil)
-    }
+//    @IBAction func selectImage(_ sender: Any) {
+//        let pickController = UIImagePickerController()
+//        pickController.delegate = self
+//        self.present(pickController,animated: true,completion: nil)
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,7 +75,10 @@ let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, 
     @IBAction func cameraOpen(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        let checkTag = sender as! UIBarButtonItem
+        if(checkTag.tag == 12){
+            imagePicker.sourceType = .camera
+        }
         present(imagePicker, animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -146,17 +157,21 @@ let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, 
         
         // TODO: Hide toolbar and navbar
         
-        toolBarCustom.isHidden = true
+        hideAndShowTopAndBottomBars(status: true)
+        
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         // TODO: Show toolbar and navbar
-          toolBarCustom.isHidden = false
+        hideAndShowTopAndBottomBars(status: false)
         return memedImage
     }
-
+    func hideAndShowTopAndBottomBars(status: Bool){
+        toolBarCustom.isHidden = status
+        topNavigationBar.isHidden = status
+    }
     @IBAction func saveImage(_ sender: Any) {
         var memeImage: UIImage?
         memeImage = generateMemedImage()
