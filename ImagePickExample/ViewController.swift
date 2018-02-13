@@ -19,6 +19,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBOutlet weak var toolBarCustom: UIToolbar!
     //MARK : Problems when Attrubutes are applied
 
+    @IBAction func cancelModal(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
   
         
     }
+    
     func configure(textField: UITextField, withText text: String) {
         textField.delegate = self
         textField.text = text
@@ -56,11 +60,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             ]
         textField.defaultTextAttributes = memeTextAttributes
     }
-//    @IBAction func selectImage(_ sender: Any) {
-//        let pickController = UIImagePickerController()
-//        pickController.delegate = self
-//        self.present(pickController,animated: true,completion: nil)
-//    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -152,6 +152,13 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     func save() {
         // Create the meme
         let meme = Meme.init(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage:generateMemedImage())
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+        print("saved")
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        memes = appDelegate.memes
     }
     func generateMemedImage() -> UIImage {
         
