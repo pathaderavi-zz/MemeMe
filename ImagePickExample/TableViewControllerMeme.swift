@@ -19,10 +19,7 @@ class TableViewControllerMeme: UIViewController, UITableViewDataSource, UITableV
         memes = appDelegate.memes
         tableView.reloadData()
 }
-    override func viewDidLoad() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        memes = appDelegate.memes
-    }
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
         return memes.count
