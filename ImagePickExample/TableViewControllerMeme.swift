@@ -36,7 +36,10 @@ class TableViewControllerMeme: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
+        let memeDetail = self.storyboard?.instantiateViewController(withIdentifier: "memeDetail") as! MemeDetailController
+      memeDetail.memes = memes[indexPath.row]
+      self.navigationController?.pushViewController(memeDetail, animated: true)
+        
     }
     
     
