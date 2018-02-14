@@ -183,15 +183,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n94-JN-gbA">
-                                <rect key="frame" x="16" y="89" width="343" height="488"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Tqj-Hw-YI0" firstAttribute="bottom" secondItem="n94-JN-gbA" secondAttribute="bottom" constant="90" id="0TG-Hl-VKv"/>
-                            <constraint firstItem="n94-JN-gbA" firstAttribute="leading" secondItem="Tqj-Hw-YI0" secondAttribute="leading" constant="16" id="J8z-CP-7f1"/>
-                            <constraint firstItem="Tqj-Hw-YI0" firstAttribute="trailing" secondItem="n94-JN-gbA" secondAttribute="trailing" constant="16" id="OMD-Fd-ocE"/>
-                            <constraint firstItem="n94-JN-gbA" firstAttribute="top" secondItem="Tqj-Hw-YI0" secondAttribute="top" constant="69" id="fV7-bP-4aC"/>
+                            <constraint firstItem="Tqj-Hw-YI0" firstAttribute="bottom" secondItem="n94-JN-gbA" secondAttribute="bottom" id="0TG-Hl-VKv"/>
+                            <constraint firstItem="n94-JN-gbA" firstAttribute="leading" secondItem="Tqj-Hw-YI0" secondAttribute="leading" id="J8z-CP-7f1"/>
+                            <constraint firstItem="Tqj-Hw-YI0" firstAttribute="trailing" secondItem="n94-JN-gbA" secondAttribute="trailing" id="OMD-Fd-ocE"/>
+                            <constraint firstItem="n94-JN-gbA" firstAttribute="top" secondItem="Tqj-Hw-YI0" secondAttribute="top" id="fV7-bP-4aC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Tqj-Hw-YI0"/>
                     </view>
