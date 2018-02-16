@@ -233,7 +233,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </imageView>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="Zxt-dQ-1zm">
-                                <rect key="frame" x="16" y="50" width="343" height="30"/>
+                                <rect key="frame" x="16" y="65" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
@@ -276,10 +276,11 @@
                             <constraint firstItem="Zxt-dQ-1zm" firstAttribute="centerX" secondItem="zmF-Lg-xNn" secondAttribute="centerX" id="En5-SP-VQ3"/>
                             <constraint firstAttribute="bottom" secondItem="OMG-ZR-OAq" secondAttribute="bottom" constant="80" id="H5L-ho-vuO"/>
                             <constraint firstItem="Zxt-dQ-1zm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Kra-gn-yVo"/>
-                            <constraint firstItem="Zxt-dQ-1zm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Lpf-VJ-XEN"/>
+                            <constraint firstItem="Zxt-dQ-1zm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="Lpf-VJ-XEN"/>
                             <constraint firstItem="zmF-Lg-xNn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MAQ-1L-TsI"/>
                             <constraint firstItem="1Nv-gs-bgM" firstAttribute="top" secondItem="zmF-Lg-xNn" secondAttribute="bottom" id="Sxb-yp-i75"/>
                             <constraint firstItem="1Nv-gs-bgM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ZbH-Uf-VbW"/>
+                            <constraint firstItem="1Nv-gs-bgM" firstAttribute="top" secondItem="OMG-ZR-OAq" secondAttribute="bottom" constant="36" id="mjI-Q2-7au"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

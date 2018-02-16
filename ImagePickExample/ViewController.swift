@@ -36,12 +36,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         }
         let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: "saveImage")
  
-    
-//        self.topTextField.adjustsFontSizeToFitWidth = true
-//        self.bottomTextField.adjustsFontSizeToFitWidth = true
-
-  
-        
     }
     
     func configure(textField: UITextField, withText text: String) {
@@ -61,12 +55,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         textField.defaultTextAttributes = memeTextAttributes
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        if(imageView.image == nil){
+        if ( imageView.image == nil ) {
             shareButton.isEnabled = false
         }
         self.dismiss(animated: true, completion: nil)
@@ -157,8 +148,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
         print("saved")
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        memes = appDelegate.memes
+
     }
     func generateMemedImage() -> UIImage {
         
