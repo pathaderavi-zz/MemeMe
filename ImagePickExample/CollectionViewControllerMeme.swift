@@ -18,7 +18,7 @@ class CollectionViewControllerMeme: UICollectionViewController {
         self.collectionView?.reloadData()
     }
     override func viewDidLoad() {
-            self.collectionView?.register(MemeCellCollection.self, forCellWithReuseIdentifier: "MemeCell")
+        self.collectionView?.register(MemeCellCollection.self, forCellWithReuseIdentifier: "MemeCell")
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
@@ -27,7 +27,7 @@ class CollectionViewControllerMeme: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCell", for: indexPath) as! MemeCellCollection
-       
+        
         let memeImages = self.memes[indexPath.row]
         let imageview:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
         imageview.contentMode = UIViewContentMode.scaleAspectFit
@@ -36,7 +36,7 @@ class CollectionViewControllerMeme: UICollectionViewController {
         cell.contentView.addSubview(imageview)
         
         return cell
-}
+    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let memeDetail = self.storyboard?.instantiateViewController(withIdentifier: "memeDetail") as! MemeDetailController

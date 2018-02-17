@@ -13,8 +13,10 @@ class MemeDetailController:UIViewController{
     @IBOutlet weak var detailImage: UIImageView!
     var indexPath: IndexPath!
     var memes: Meme!
-
+    
     override func viewDidLoad() {
-       self.detailImage.image = memes.memedImage
+        
+        self.detailImage.image = memes.memedImage
+        
     }
 }

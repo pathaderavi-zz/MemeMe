@@ -18,7 +18,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var toolBarCustom: UIToolbar!
     //MARK : Problems when Attrubutes are applied
-
+    
     @IBAction func cancelModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -31,11 +31,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         configure(textField: topTextField, withText: "SET TOP TEXT")
         configure(textField: bottomTextField, withText: "SET BOTTOM TEXT")
         
-        if (imageView.image == nil){
+        if ( imageView.image == nil ) {
             shareButton.isEnabled = false
         }
         let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: "saveImage")
- 
+        
     }
     
     func configure(textField: UITextField, withText text: String) {
@@ -54,8 +54,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             ]
         textField.defaultTextAttributes = memeTextAttributes
     }
-
-
+    
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         if ( imageView.image == nil ) {
             shareButton.isEnabled = false
@@ -81,7 +81,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-   
+        
         if(textField.text?.count==0){
             if(textField.tag==1){
                 textField.text = "SET TOP TEXT"
@@ -102,7 +102,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             unsubscribeFromKeyboardNotifications()
         }
         textField.text = ""
-      
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -148,7 +148,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
         print("saved")
-
+        
     }
     func generateMemedImage() -> UIImage {
         
@@ -179,10 +179,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 self.save()
                 self.dismiss(animated: true, completion: nil)
             }
-
+            
         }
-       self.present(sharedController,animated: true,completion: nil)
-
+        self.present(sharedController,animated: true,completion: nil)
+        
     }
     
 }
