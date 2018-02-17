@@ -67,7 +67,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         let checkTag = sender as! UIBarButtonItem
-        if(checkTag.tag == 12){
+        if ( checkTag.tag == 12 ) {
             imagePicker.sourceType = .camera
         }
         present(imagePicker, animated: true, completion: nil)
@@ -82,23 +82,23 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        if(textField.text?.count==0){
-            if(textField.tag==1){
+        if ( textField.text?.count == 0 ) {
+            if ( textField.tag == 1 ) {
                 textField.text = "SET TOP TEXT"
-            }else{
+            } else {
                 textField.text = "SET BOTTOM TEXT"
             }
         }
         
         view.frame.origin.y = 0
-        if(textField.tag==1){
+        if ( textField.tag == 1 ) {
             subscribeToKeyboardNotifications()
         }
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if(textField.tag==1){
+        if ( textField.tag == 1 ) {
             unsubscribeFromKeyboardNotifications()
         }
         textField.text = ""
